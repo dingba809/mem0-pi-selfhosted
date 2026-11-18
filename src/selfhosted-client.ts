@@ -36,6 +36,7 @@ export interface MemoryItem {
 }
 
 const DEFAULT_TIMEOUT_MS = 15_000;
+const WRITE_TIMEOUT_MS = 60_000;
 
 function mapFilters(filters?: Record<string, string>): Record<string, string> {
   if (!filters) return {};
@@ -134,6 +135,7 @@ export class SelfHostedMem0Client {
     const data = await this.request<{ results?: MemoryItem[] }>("/memories", {
       method: "POST",
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(WRITE_TIMEOUT_MS),
     });
     const results = (data.results ?? []).map(normalizeMemory);
     return {
@@ -159,6 +161,7 @@ export class SelfHostedMem0Client {
     await this.request(`/memories/${encodeURIComponent(memoryId)}`, {
       method: "PUT",
       body: JSON.stringify({ text: body.text }),
+      signal: AbortSignal.timeout(WRITE_TIMEOUT_MS),
     });
     return { status: "Memory updated." };
   }
