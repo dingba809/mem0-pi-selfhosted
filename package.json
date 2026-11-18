@@ -1,0 +1,27 @@
+{
+  "name": "mem0-pi-selfhosted",
+  "version": "0.3.2-selfhosted.1",
+  "type": "module",
+  "description": "Self-hosted Mem0 memory extension and skills for Pi Agent",
+  "license": "Apache-2.0",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "skills",
+    "memory",
+    "mem0"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/entry.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  }
+}

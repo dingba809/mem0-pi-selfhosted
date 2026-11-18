@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://<your-server-ip>:8888",
+  "apiKey": "m0sk_your_api_key_here",
+  "userId": "your-username",
+  "autoCapture": true,
+  "defaultScope": "project",
+  "contextInjection": true,
+  "searchThreshold": 0.3
+}
